@@ -11,7 +11,7 @@ class Game
 
 public:
 	static Game* Instance();
-	void Initialize();
+	void Load();
 	void StartGameloop();
 	void Exit();
 

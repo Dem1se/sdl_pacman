@@ -159,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="GameMode.hpp" />
+    <ClInclude Include="TileSets.hpp" />
     <ClInclude Include="Level.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="TileSheetHelper.hpp" />

@@ -18,25 +18,33 @@ Game* Game::Instance()
 	}
 }
 
-void Game::Initialize()
+void Game::Load()
 {
+	_VidMgr->Load();
 }
 
 void Game::StartGameloop()
 {
+	unsigned int tickStart, tickEnd, delta;
+
 	while (1) {
+		tickStart = SDL_GetTicks();
 		if (SDL_QuitRequested()) {
 			break;
 		}
-		_GameMode->PlayerInst->Update();
+		_GameMode->Tick();
 		_VidMgr->Render();
-		SDL_Delay(16); // wait 16 ms
+
+		tickEnd = SDL_GetTicks();
+		delta = tickEnd - tickStart;
+		SDL_Delay((int)(16.67 - delta)); // Max framerate is ~60
 	}
 }
 
 void Game::Exit()
 {
-	_VidMgr->Exit();
+	_VidMgr->~VideoManager();
+	_GameMode->~GameMode();
 	SDL_Quit();
 }
 

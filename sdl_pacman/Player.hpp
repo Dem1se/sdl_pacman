@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 
-struct Position { /* pos of pacman's center */ float x, y; };
+struct Position{ float x, y; }; /* pos of pacman's center */
 enum class Direction {Up, Down, Left, Right};
 
 class Player
@@ -13,6 +13,7 @@ class Player
 	
 public:
 	Player();
+	~Player();
 	void Update();
 	Position GetPosition();
 

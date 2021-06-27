@@ -1,18 +1,24 @@
 #pragma once
 #include "SDL.h"
 #include "GameMode.hpp"
+#include "TileSheetHelper.hpp"
 
 class VideoManager
 {
+	SDL_Window* _Window;
+	SDL_Renderer* _Renderer;
+	SDL_Texture* _Pacman,* _Level;
+
 public:
-	float scaleX, scaleY;
-	int width, height;
-	SDL_Window* window;
-	SDL_Renderer* renderer;
-	SDL_Texture* tilesheet, *pacman;
+	const float scaleX = 2.0f, scaleY = 2.0f;;
+	const int Width = 224, Height = 288;
+
 	GameMode* _GameMode;
+	TileSheetHelper* _TileSheetHelper;
+
 public:
 	VideoManager(GameMode* GameModeInst);
-	void Exit();
+	~VideoManager();
+	void Load();
 	void Render();
 };

@@ -53,6 +53,10 @@ Player::Player()
 	_Direction = Direction::Left;
 }
 
+Player::~Player()
+{
+}
+
 bool Player::IsInputKey(SDL_Event ev)
 {
 	if (ev.key.keysym.sym == SDLK_UP ||
