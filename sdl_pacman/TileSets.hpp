@@ -1,6 +1,6 @@
 #pragma once
 
-enum class TileSet
+enum class TileSetMinimal
 {
 	Bottom,
 	Left,

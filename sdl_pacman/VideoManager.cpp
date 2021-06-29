@@ -6,20 +6,14 @@ VideoManager::VideoManager(GameMode* GameModeInst)
     _GameMode = GameModeInst;
     _TileSheetHelper = new TileSheetHelper();
 
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't initialize SDL: %s", SDL_GetError());
-    }
-    
-    if (SDL_CreateWindowAndRenderer(Width * scaleX, Height * scaleY, SDL_WINDOW_SHOWN, &_Window, &_Renderer)) {
+    if (SDL_CreateWindowAndRenderer(Width * ScaleX, Height * ScaleY, SDL_WINDOW_SHOWN, &_Window, &_Renderer)) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't create window and renderer: %s", SDL_GetError());
     }
 
     SDL_Surface* pac = SDL_LoadBMP("C:/Users/Dem1se/Source/Repos/sdl_pacman/sdl_pacman/Assets/pacman.bmp");
-
     _Pacman = SDL_CreateTextureFromSurface(_Renderer, pac);
-
     SDL_FreeSurface(pac);
-    SDL_RenderSetScale(_Renderer, scaleX, scaleY);
+    SDL_RenderSetScale(_Renderer, ScaleX, ScaleY);
 }
 
 VideoManager::~VideoManager()
@@ -29,7 +23,7 @@ VideoManager::~VideoManager()
     SDL_DestroyWindow(_Window);
 
     _TileSheetHelper->~TileSheetHelper();
-    _GameMode->~GameMode();
+    // _GameMode will be destroyed by Game (parent)
 }
 
 void VideoManager::Load()
@@ -60,7 +54,7 @@ void VideoManager::Render()
 {
     int pacPosX = _GameMode->GetPlayerPosition().x;
     int pacPosY = _GameMode->GetPlayerPosition().y;
-    SDL_Rect pacPosRect = { pacPosX, pacPosY, 16, 16 };
+    SDL_Rect pacPosRect = { pacPosX, pacPosY, 10, 13 };
     SDL_Rect levelPosRect = { 0, 0, Width, Height };
     
     SDL_SetRenderDrawColor(_Renderer, 0x00, 0x00, 0x00, 0xff);

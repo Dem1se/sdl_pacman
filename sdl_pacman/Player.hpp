@@ -6,7 +6,7 @@ enum class Direction {Up, Down, Left, Right};
 
 class Player
 {
-	int _BaseSpeed; // 88px per sec
+	int _BaseSpeed;
 	Position _Pos;
 	SDL_Event _InputEvent;
 	Direction _Direction;

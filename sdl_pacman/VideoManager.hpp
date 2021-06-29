@@ -10,7 +10,7 @@ class VideoManager
 	SDL_Texture* _Pacman,* _Level;
 
 public:
-	const float scaleX = 2.0f, scaleY = 2.0f;;
+	const float ScaleX = 3.0f, ScaleY = 3.0f;;
 	const int Width = 224, Height = 288;
 
 	GameMode* _GameMode;
